@@ -1,0 +1,25 @@
+# =========================
+#   GENERAL INFORMATIONS
+# =========================
+
+name: Souls
+main: Minestrap\Souls\Main
+api: [4.0.0]
+version: 1.0.0
+
+# =========================
+#    OTHER INFORMATIONS
+# =========================
+
+author: ["HenryDM"]
+website: "https://minestrap.github.io/"
+description: "A plugin to add souls to players in your server"
+
+# =========================
+#        PERMISSIONS
+# =========================
+
+permissions: 
+  souls.command:
+    description: "default souls command permission"
+    default: true

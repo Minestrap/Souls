@@ -1,0 +1,19 @@
+# =========================
+#      GENERAL CONFIG
+# =========================
+# Instructions: Avabiable sell functions: "Money" and "XP", use 1 to money e 2 to xp.
+# To get others functions to sell souls use plugin API givven on github.
+
+help-by-ui: true
+
+souls-sell-shop: false
+souls-sell-way: 1
+
+# =========================
+#       SOULS CONFIG
+# =========================
+# Intructions: 'souls-by-kills' is the amount of souls that will give after kill a player.
+# If you want to active function to every worlds, only don't add anything.
+
+souls-by-kill: 1
+souls-worlds: ["Arena", "world"]
