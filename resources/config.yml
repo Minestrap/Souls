@@ -2,17 +2,14 @@
 # =========================
 #      GENERAL CONFIG
 # =========================
-# Instructions: Avabiable sell functions: "Money" and "XP", use 1 to money e 2 to xp.
-# To get others functions to sell souls use plugin API givven on github.
-# If you set commands by ui to false some commands will not work.
+# Instructions: If you set commands by ui to false some commands will not work.
+# Set to false the commands to disable.
 
-help-by-ui: true
-commands-by-ui: true
-
-souls-sell-shop: false
-souls-sell-way: 1
+souls-sell-command: true
+souls-view-command: true
 
 in-game-message: "use this command in-game."
+command-not-available: "this command is not available."
 no-perms-message: "you don't have permission to execute this."
 
 # =========================
@@ -25,6 +22,18 @@ souls-by-kill: 1
 souls-worlds: ["Arena", "world"]
 
 # =========================
+#    SELL GENERAL CONFIG
+# =========================
+# Instructions: use 1 to money e 2 to xp in 'souls-sell-mode'.
+# To get others functions to sell souls use plugin API givven on github.
+
+price-per-soul: 1
+souls-sell-mode: 1
+
+not-enough-souls: "you don't have sufficient souls to sell."
+success-when-selling: "all your souls have been successfully sold!"
+
+# =========================
 #     SELL FORM CONFIG
 # =========================
 # Intructions: don't use expansive titles and descriptions to avoid mistakes
@@ -34,5 +43,13 @@ souls-worlds: ["Arena", "world"]
 souls-sell-title: "Souls Shop"
 souls-sell-description: "Hello %player_name%, you have %player_souls% souls."
 souls-sell-button: "Sell\nSell your souls"
-souls-exit-button: "Exit\nExit from souls sell ui"
+souls-sell-exit-button: "Exit\nExit from souls sell ui"
+
+# =========================
+#    VIEW GENERAL CONFIG
+# =========================
+# Instructions: Use %player_souls% to get all player souls from database.
+# Use %player_name% to get general player name.
+
+souls-view-message-command: "you have %player_souls% souls."
 ...

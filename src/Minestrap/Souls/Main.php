@@ -10,7 +10,8 @@ use Minestrap\Souls\Events\PlayerAdd;
 use Minestrap\Souls\Events\PlayerEvent;
 
 use Minestrap\Souls\API\SoulsAPI;
-use Minestrap\Souls\Commands\SoulsCommand;
+use Minestrap\Souls\Commands\SoulsViewCommand;
+use Minestrap\Souls\Commands\SoulsSellCommand;
 
 class Main extends PluginBase implements Listener {
 
@@ -31,7 +32,8 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents(new PlayerEvent($this), $this);
         
         $this->soulsAPI = new SoulsAPI($this);
-        $this->getServer()->getCommandMap()->register("soulssell", new SoulsCommand($this));
+		$this->getServer()->getCommandMap()->register("souls", new SoulsViewCommand($this));
+        $this->getServer()->getCommandMap()->register("soulssell", new SoulsSellCommand($this));
     }
 
     //==============================
@@ -40,7 +42,7 @@ class Main extends PluginBase implements Listener {
 
     public function onDisable(): void {
         $this->players->save();
-    }
+    }    
 
     //==============================
     //      GET PLAYERS CONFIG

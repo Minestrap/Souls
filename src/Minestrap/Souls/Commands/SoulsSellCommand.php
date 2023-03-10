@@ -10,10 +10,11 @@ use pocketmine\command\CommandSender;
 use Minestrap\Souls\API\SoulsAPI;
 use Minestrap\Souls\Utils\PluginUtils;
 
-use davidglitch04\libEco\libEco;
-use Vecnavium\FormsUI\SimpleForm;
+use Minestrap\Souls\libs\davidglitch04\libEco\libEco;
+use Minestrap\Souls\libs\Vecnavium\FormsUI\SimpleForm;
+use Minestrap\Souls\libs\Vecnavium\FormsUI\Form;
 
-class SoulsCommand extends Command {
+class SoulsSellCommand extends Command {
 
     /** @var Main */
     private $main;
@@ -22,7 +23,7 @@ class SoulsCommand extends Command {
     private $config;
 
     /** @var SoulsAPI */
-    private $SoulsAPI;
+    private $soulsAPI;
 
     //==============================
     //     COMMAND CONSTRUCTOR
@@ -39,7 +40,7 @@ class SoulsCommand extends Command {
     }
 
     //==============================
-    //     COMMAND CONSTRUCTOR
+    //     COMMAND EXECUTION
     //==============================
     
     public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
@@ -53,18 +54,19 @@ class SoulsCommand extends Command {
             return true;
         }
 
-        if(!$this->config->get("commands-by-ui")) {
-            $sender->sendMessage("not available yet.");
+        if(!$this->config->get("souls-sell-command")) {
+            $sender->sendMessage($this->config->get("command-not-available"));
         } else {
-            $this->SoulsSellUI($player);
+            $this->soulsSellUI($sender);
         }
+        return true;
     }
 
     //==============================
     //        FORM GENERATOR
     //==============================
 
-    public function SoulsSellUI(Player $player): void {
+    public function soulsSellUI(Player $player): void {
         $form = new SimpleForm(function(Player $player, ?int $data) {
             if($data === null) {
                 return;
@@ -74,30 +76,38 @@ class SoulsCommand extends Command {
                 case 0:
                     $soulprice = $this->config->get("price-per-soul");
                     $souls = $this->soulsAPI->getSouls($player);
-                    $price = $souls * $souprice;
+                    $price = $souls * $soulprice;
 
-                    if($this->config->get("souls-sell-way") == 1) {
+                    if($this->config->get("souls-sell-mode") == 1) {
                         if($price > 0) {
-                            libEco::addMoney($player, $price);
-                            $this->setSouls($player, 0);
-                        }
+                            libEco::getInstance()->addMoney($player, $price);
+                            $this->soulsAPI->setSouls($player, 0);
+							$player->sendMessage($this->config->get("success-when-selling"));
+						
+                        } else {
+							$player->sendMessage($this->config->get("not-enough-souls"));
+						}
 
                     } else {
                         if($price > 0) {
-                            $sender->getXpManager()->addXp($price);
-                            $this->setSouls($player, 0);
+                            $player->getXpManager()->addXpLevels($price);
+                            $this->soulsAPI->setSouls($player, 0);
+							$player->sendMessage($this->config->get("success-when-selling"));
+                        
+                        } else {
+                            $player->sendMessage($this->config->get("not-enough-souls"));
                         }
                     }
                 break;
 
                 case 1:
-                    PluginUtils::playSound($sender, "random.pop", 1, 1);
+                    PluginUtils::playSound($player, "random.pop", 1, 1);
                 break;
             }
         });
 
         $content = $this->config->get("souls-sell-description");
-        $playerSouls = $soulsAPI->getSouls($player);
+        $playerSouls = $this->soulsAPI->getSouls($player);
         $playerName = $player->getName();
         
         $content = str_replace("%player_souls%", $playerSouls, $content);

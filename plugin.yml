@@ -25,3 +25,7 @@ permissions:
   souls.sell.command:
     description: "default souls sell command permission"
     default: true
+
+  souls.view.command:
+    description: "default souls view command permission"
+    default: true
