@@ -45,6 +45,7 @@ $soulsAPI->setSouls($player, $value);
 
 // view player total souls
 $souls = $soulsAPI->getSouls($player);
+```
 
 ---
 
