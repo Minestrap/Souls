@@ -4,7 +4,7 @@ namespace Minestrap\Souls\Events;
 
 use Minestrap\Souls\Main;
 use pocketmine\event\Listener;
-use Minestrap\Souls\API\AddSouls;
+use Minestrap\Souls\API\SoulsAPI;
 
 use pocketmine\player\PlayerDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
@@ -16,42 +16,43 @@ class PlayerEvent implements Listener {
 
     /** @var Config */
     private $config;
-    
-    /** @var Config */
-    private $players;
+
+    /** @var SoulsAPI */
+    private $soulsAPI;
 
     //==============================
     //     LISTENER CONSTRUCTOR
-    //==============================
+    //==============================   
 
     public function __construct(Main $main) {
         $this->main = $main;
         $this->config = $this->main->getConfig();
-        $this->players = $this->main->getPlayers();
+        $this->soulsAPI = new SoulsAPI($main);
     }
 
     //==============================
-    //     KILLS SOULS MANAGER
-    //==============================
+    //     PLAYER KILL EVENT ADD
+    //==============================       
 
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getPlayer();
-        $playername = $player->getName();
         $worldname = $player->getWorld()->getFolderName();
 
         if(!in_array($worldname, $this->config->get("souls-worlds", []))) {
             return;
         }
 
+        $cause = $player->getLastDamageCause();
+
         if($cause instanceof EntityDamageByEntityEvent) {
             $killer = $cause->getDamager();
-            if($killer instanceof Player) {
+
+            if ($killer instanceof Player) {
                 $killername = $killer->getName();
                 $amount = $this->config->get("souls-by-kill");
 
-                $addSouls = new AddSouls($this->config);
-                $addSouls->addSouls($killername, $amount);
+                $this->soulsAPI->addSouls($killer, $amount);
             }
-        }        
+        }
     }
 }

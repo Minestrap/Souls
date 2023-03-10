@@ -1,13 +1,19 @@
+---
 # =========================
 #      GENERAL CONFIG
 # =========================
 # Instructions: Avabiable sell functions: "Money" and "XP", use 1 to money e 2 to xp.
 # To get others functions to sell souls use plugin API givven on github.
+# If you set commands by ui to false some commands will not work.
 
 help-by-ui: true
+commands-by-ui: true
 
 souls-sell-shop: false
 souls-sell-way: 1
+
+in-game-message: "use this command in-game."
+no-perms-message: "you don't have permission to execute this."
 
 # =========================
 #       SOULS CONFIG
@@ -17,3 +23,16 @@ souls-sell-way: 1
 
 souls-by-kill: 1
 souls-worlds: ["Arena", "world"]
+
+# =========================
+#     SELL FORM CONFIG
+# =========================
+# Intructions: don't use expansive titles and descriptions to avoid mistakes
+# Use %player_souls% to get all player souls from database.
+# Use %player_name% to get general player name.
+
+souls-sell-title: "Souls Shop"
+souls-sell-description: "Hello %player_name%, you have %player_souls% souls."
+souls-sell-button: "Sell\nSell your souls"
+souls-exit-button: "Exit\nExit from souls sell ui"
+...

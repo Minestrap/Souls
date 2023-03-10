@@ -15,11 +15,13 @@ author: ["HenryDM"]
 website: "https://minestrap.github.io/"
 description: "A plugin to add souls to players in your server"
 
+softdepend: ["EconomyAPI", "BedrockEconomy"]
+
 # =========================
 #        PERMISSIONS
 # =========================
 
 permissions: 
-  souls.command:
-    description: "default souls command permission"
+  souls.sell.command:
+    description: "default souls sell command permission"
     default: true
