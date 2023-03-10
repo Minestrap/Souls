@@ -8,9 +8,9 @@
 souls-sell-command: true
 souls-view-command: true
 
-in-game-message: "use this command in-game."
-command-not-available: "this command is not available."
-no-perms-message: "you don't have permission to execute this."
+in-game-message: "§cuse this command in-game."
+command-not-available: "§cthis command is not available."
+no-perms-message: "§cyou don't have permission to execute this."
 
 # =========================
 #       SOULS CONFIG
@@ -30,8 +30,8 @@ souls-worlds: ["Arena", "world"]
 price-per-soul: 1
 souls-sell-mode: 1
 
-not-enough-souls: "you don't have sufficient souls to sell."
-success-when-selling: "all your souls have been successfully sold!"
+not-enough-souls: "§cyou don't have sufficient souls to sell."
+success-when-selling: "§call your souls have been successfully sold!"
 
 # =========================
 #     SELL FORM CONFIG
@@ -40,10 +40,10 @@ success-when-selling: "all your souls have been successfully sold!"
 # Use %player_souls% to get all player souls from database.
 # Use %player_name% to get general player name.
 
-souls-sell-title: "Souls Shop"
-souls-sell-description: "Hello %player_name%, you have %player_souls% souls."
-souls-sell-button: "Sell\nSell your souls"
-souls-sell-exit-button: "Exit\nExit from souls sell ui"
+souls-sell-title: "§7Souls Sell"
+souls-sell-description: "§aHello §6%player_name%, §ayou have §6%player_souls% §asouls."
+souls-sell-button: "§eSell\n§7Sell your souls"
+souls-sell-exit-button: "§cExit\n§7Exit from souls sell ui"
 
 # =========================
 #    VIEW GENERAL CONFIG
@@ -51,5 +51,5 @@ souls-sell-exit-button: "Exit\nExit from souls sell ui"
 # Instructions: Use %player_souls% to get all player souls from database.
 # Use %player_name% to get general player name.
 
-souls-view-message-command: "you have %player_souls% souls."
+souls-view-message-command: "§ayou have §6%player_souls% §asouls."
 ...
