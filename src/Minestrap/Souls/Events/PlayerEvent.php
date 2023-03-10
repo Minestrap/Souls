@@ -44,7 +44,15 @@ class PlayerEvent implements Listener {
 
         $cause = $player->getLastDamageCause();
 
-        $amount = $this->config->get("souls-by-kill");
-        $this->soulsAPI->addSouls($player, $amount);
+        if($cause instanceof EntityDamageByEntityEvent) {
+            $killer = $cause->getDamager();
+
+            if($killer instanceof Player) {
+                $killername = $killer->getName();
+
+                $amount = $this->config->get("souls-by-kill");
+                $this->soulsAPI->addSouls($killer, $amount);
+            }
+        }
     }
 }
