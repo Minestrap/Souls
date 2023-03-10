@@ -1,4 +1,4 @@
-![Banner](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoLb1hx-nQKuNDj8b5puRRNtDamDvE6Um32Q&usqp=CAU)
+![Banner](https://i.imgur.com/qBOFWmT.jpg)
 
 ## 💀 • Souls
 
