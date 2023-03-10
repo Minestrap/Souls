@@ -56,7 +56,7 @@ class SoulsCommand extends Command {
         if(!$this->config->get("commands-by-ui")) {
             $sender->sendMessage("not available yet.");
         } else {
-            $this->SoulsSellUI($sender);
+            $this->SoulsSellUI($player);
         }
     }
 
@@ -73,19 +73,19 @@ class SoulsCommand extends Command {
             switch($data) {
                 case 0:
                     $soulprice = $this->config->get("price-per-soul");
-                    $souls = $this->soulsAPI->getSouls($sender);
+                    $souls = $this->soulsAPI->getSouls($player);
                     $price = $souls * $souprice;
 
                     if($this->config->get("souls-sell-way") == 1) {
                         if($price > 0) {
-                            libEco::addMoney($sender, $price);
-                            $this->setSouls($sender, 0);
+                            libEco::addMoney($player, $price);
+                            $this->setSouls($player, 0);
                         }
 
                     } else {
                         if($price > 0) {
                             $sender->getXpManager()->addXp($price);
-                            $this->setSouls($sender, 0);
+                            $this->setSouls($player, 0);
                         }
                     }
                 break;
