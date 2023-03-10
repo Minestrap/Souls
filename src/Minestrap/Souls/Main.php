@@ -4,6 +4,7 @@ namespace Minestrap\Souls;
 
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 
 use Minestrap\Souls\Events\PlayerAdd;
 use Minestrap\Souls\Events\PlayerEvent;
@@ -11,7 +12,7 @@ use Minestrap\Souls\Events\PlayerEvent;
 use Minestrap\Souls\API\SoulsAPI;
 use Minestrap\Souls\Commands\SoulsCommand;
 
-class Main extends PluginBase {
+class Main extends PluginBase implements Listener {
 
     private $config;
     private $players;
@@ -23,8 +24,8 @@ class Main extends PluginBase {
 
     public function onEnable(): void {
         $this->saveDefaultConfig();
-        $this->config = new Config($this->getDataFolder() . "config.yml" . Config::YAML);
-        $this->players = new Config($this->getDataFolder() . "souls.yml" . Config::YAML);
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $this->players = new Config($this->getDataFolder() . "souls.yml", Config::YAML);
 
         $this->getServer()->getPluginManager()->registerEvents(new PlayerAdd($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PlayerEvent($this), $this);
@@ -53,7 +54,7 @@ class Main extends PluginBase {
     //      GET GENERAL CONFIG
     //==============================        
 
-    public function getConfig(): Config  {
+    public function getPluginConfig(): Config  {
         return $this->config;
     }
 

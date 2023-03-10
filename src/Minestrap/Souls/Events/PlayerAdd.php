@@ -3,7 +3,7 @@
 namespace Minestrap\Souls\Events;
 
 use Minestrap\Souls\Main;
-use pocktmine\utils\Config;
+use pocketmine\utils\Config;
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerJoinEvent;
@@ -37,7 +37,7 @@ class PlayerAdd implements Listener {
         $player = $event->getPlayer();
         $playername = $player->getName();
 
-        if(!$config->exists("players.$playername")) {
+        if(!$this->config->exists("players.$playername")) {
             $this->players->setNested("players.$playername", 0);
             $this->players->save();
         }

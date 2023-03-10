@@ -6,7 +6,7 @@ use Minestrap\Souls\Main;
 use pocketmine\event\Listener;
 use Minestrap\Souls\API\SoulsAPI;
 
-use pocketmine\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
 class PlayerEvent implements Listener {
@@ -47,10 +47,10 @@ class PlayerEvent implements Listener {
         if($cause instanceof EntityDamageByEntityEvent) {
             $killer = $cause->getDamager();
 
-            if ($killer instanceof Player) {
+            if($killer instanceof Player) {
                 $killername = $killer->getName();
-                $amount = $this->config->get("souls-by-kill");
 
+                $amount = $this->config->get("souls-by-kill");
                 $this->soulsAPI->addSouls($killer, $amount);
             }
         }
