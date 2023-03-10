@@ -6,6 +6,12 @@
 
 ---
 
+## ⭐ • Planned
+
+> we are planning to add even more features soon to the plugin such as Souls management systems and also an item raffle system with a certain amount of souls clicking on an item that will probably be an end portal... just like in hypixel
+
+---
+
 ## 📦 • API
 
 1. To start the development with the plugin API you need create ```plugin.yml``` and set depend:
