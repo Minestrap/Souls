@@ -10,9 +10,9 @@ use pocketmine\command\CommandSender;
 use Minestrap\Souls\API\SoulsAPI;
 use Minestrap\Souls\Utils\PluginUtils;
 
-use Minestrap\Souls\libs\davidglitch04\libEco\libEco;
-use Minestrap\Souls\libs\Vecnavium\FormsUI\SimpleForm;
-use Minestrap\Souls\libs\Vecnavium\FormsUI\Form;
+use Vecnavium\FormsUI\Form;
+use davidglitch04\libEco\libEco;
+use Vecnavium\FormsUI\SimpleForm;
 
 class SoulsSellCommand extends Command {
 
