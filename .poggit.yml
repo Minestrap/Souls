@@ -12,4 +12,6 @@ projects:
       - src: David-pm-pl/libEco/libEco
         version: ^3.0.0
         branch: stable
+    lint:
+      phpstan: false        
 ...

@@ -80,7 +80,7 @@ class SoulsSellCommand extends Command {
 
                     if($this->config->get("souls-sell-mode") == 1) {
                         if($price > 0) {
-                            libEco::getInstance()->addMoney($player, $price);
+                            libEco::addMoney($player, $price);
                             $this->soulsAPI->setSouls($player, 0);
 							$player->sendMessage($this->config->get("success-when-selling"));
 						
