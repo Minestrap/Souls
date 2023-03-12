@@ -15,8 +15,13 @@ use Minestrap\Souls\Commands\SoulsSellCommand;
 
 class Main extends PluginBase implements Listener {
 
+    /** @var Config */
     private $config;
+
+    /** @var Config */
     private $players;
+
+    /** @var SoulsAPI */
     private $soulsAPI;
 
     //==============================

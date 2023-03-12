@@ -3,9 +3,11 @@
 namespace Minestrap\Souls\Events;
 
 use Minestrap\Souls\Main;
+use pocketmine\utils\Config;
 use pocketmine\event\Listener;
 use Minestrap\Souls\API\SoulsAPI;
 
+use pocketmine\player\Player;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
@@ -46,7 +48,6 @@ class PlayerEvent implements Listener {
 
         if($cause instanceof EntityDamageByEntityEvent) {
             $killer = $cause->getDamager();
-
             if($killer instanceof Player) {
                 $killername = $killer->getName();
 
