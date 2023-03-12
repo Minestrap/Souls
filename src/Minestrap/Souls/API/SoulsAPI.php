@@ -3,6 +3,7 @@
 namespace Minestrap\Souls\API;
 
 use Minestrap\Souls\Main;
+use pocketmine\utils\Config;
 use pocketmine\player\Player;
 
 class SoulsAPI {
@@ -22,7 +23,7 @@ class SoulsAPI {
 
     public function __construct(Main $main) {
         $this->main = $main;
-        $this->config = $this->main->getConfig();
+        $this->config = $this->main->getPluginConfig();
         $this->players = $this->main->getPlayers();
     }
 

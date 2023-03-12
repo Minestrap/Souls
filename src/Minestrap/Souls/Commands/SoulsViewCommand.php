@@ -3,6 +3,7 @@
 namespace Minestrap\Souls\Commands;
 
 use Minestrap\Souls\Main;
+use pocketmine\utils\Config;
 use Minestrap\Souls\API\SoulsAPI;
 use Minestrap\Souls\Utils\PluginUtils;
 
@@ -27,7 +28,7 @@ class SoulsViewCommand extends Command {
 
     public function __construct(Main $main) {
         $this->main = $main;
-        $this->config = $this->main->getConfig();
+        $this->config = $this->main->getPluginConfig();
         $this->soulsAPI = new SoulsAPI($main);
 
         parent::__construct("souls");

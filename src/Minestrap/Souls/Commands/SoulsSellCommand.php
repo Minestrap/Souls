@@ -3,6 +3,7 @@
 namespace Minestrap\Souls\Commands;
 
 use Minestrap\Souls\Main;
+use pocketmine\utils\Config;
 use pocketmine\player\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -31,7 +32,7 @@ class SoulsSellCommand extends Command {
 
     public function __construct(Main $main) {
         $this->main = $main;
-        $this->config = $this->main->getConfig();
+        $this->config = $this->main->getPluginConfig();
         $this->soulsAPI = new SoulsAPI($main);
 
         parent::__construct("soulssell");
